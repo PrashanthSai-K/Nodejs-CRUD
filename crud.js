@@ -21,7 +21,7 @@ const connectParam = {
     useUnifiedTopology : true
 }
 
-const uri = `mongodb://127.0.0.1:27017/demo`
+const uri = `mongodb+srv://root:abcd1234@demo.vojbrj9.mongodb.net/?retryWrites=true&w=majority`
 
 const connection = mongoose.connect(uri,connectParam)
                     .then(()=>console.log('COnnedted to Mongo DB Successfully'))
