@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300;1,700&display=swap" rel="stylesheet">
+    <title>Insert</title>
+    <style>
+        body {
+            font-family: 'Poppins';
+        }
+
+        .heading {
+            font-size: x-large;
+            font-weight: 600;
+            margin-left: 5%;
+        }
+
+        .form-container {
+            margin-left: 8%;
+            margin-top: 3%;
+        }
+
+        .form-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .form-group input {
+            border: none;
+            border-bottom: 1px solid black;
+        }
+
+        .form-group input:focus {
+            outline: none;
+        }
+
+        .button {
+            padding: 10px;
+            background-color: white;
+            border: 1px solid black;
+            border-radius: 10px;
+            width: 100px;
+            transition: all ease-in-out 0.3s;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background-color: black;
+            color: white;
+        }
+        .button a{
+            text-decoration: none;
+            color: black;
+        }
+        .button:hover a{
+            color: white;
+        }
+        .header-container{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header-container">
+        <div class="heading">Insert New User :</div>
+        <button class="button" style="margin-right: 10%;"><a href="/">Home</a></button>
+    </div>
+    <div class="form-container">
+        <form action="/insertdb" method="POST">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required autocomplete="off" style="margin-left: 5%;"><br><br>
+            </div>
+            <div class="form-group">
+                <label for="rollno">Roll no:</label>
+                <input type="text" id="rollno" name="rollno" required autocomplete="off"
+                    style="margin-left: 5%;"><br><br>
+            </div>
+            <div class="form-group">
+                <label for="dept">Department :</label>
+                <input type="text" id="dept" name="dept" required autocomplete="off" style="margin-left: 2%;"><br><br>
+            </div>
+            <button type="submit" class="button">insert</button>
+        </form>
+    </div>
+</body>
+
+</html>

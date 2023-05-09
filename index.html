@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300;1,700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins';
+        }
+
+        .heading {
+            text-align: center;
+            font-size: x-large;
+            font-weight: 600;
+            margin-left: 6%;
+        }
+        .header-container{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 2%;
+        }
+        .nav-links{
+            margin-right: 6%;
+            padding: 10px;
+            margin-left: 10px;
+        }
+        .nav-links a{
+            text-decoration: none;
+            color: black;
+            border: 1px solid black;
+            padding: 10px;
+            border-radius: 10px;
+            transition: all ease-in 0.3s;
+        }
+        .nav-links a:hover{
+            color: white;
+            background-color: black;
+        }
+        #users-list{
+            margin-left: 8%;
+            margin-top: 2%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header-container">
+        <div class="heading">View users</div>
+        <div class="nav-links">
+            <a href="/insert">Add New</a>
+            <a href="/update">Update Value</a>
+        </div>
+    </div>
+
+    <div id="users-list"></div>
+</body>
+
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: '/users',
+            method: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                if (data.length === 0) {
+                    $('#users-list').html("<p>No Users Found</P>");
+                } else {
+                    var usersHtml = '';
+                    data.forEach(function (user) {
+                        usersHtml += "<li class=list-data>" + user.name + '-' + user.rollno + "-" + user.dept + "</li>"
+                    })
+                    $("#users-list").html("<ul class= main-list>" + usersHtml + "</ul>");
+                }
+            },
+            error: function () {
+                $('#users-list').html("<p> Error </p>");
+            }
+        })
+    })
+</script>
+
+</html>
