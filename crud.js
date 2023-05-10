@@ -20,7 +20,7 @@ const connectParam = {
     useUnifiedTopology : true
 }
 
-const uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@demo.vojbrj9.mongodb.net/?retryWrites=true&w=majority`
+const uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@demo.vojbrj9.mongodb.net/demo?retryWrites=true&w=majority`
 
 const connection = mongoose.connect(uri,connectParam)
                     .then(()=>console.log('COnnedted to Mongo DB Successfully'))
@@ -33,7 +33,7 @@ const userschema = new mongoose.Schema({
     dept:"string"
 })
 
-const user = mongoose.model('user', userschema)
+const user = mongoose.model('user', userschema, 'user')
 
 app.get('/',(req,res)=>{
 
@@ -61,7 +61,6 @@ app.post('/deletedb', (req,res)=>{
 })
 
 app.post('/insertdb',(req,res)=>{
-    console.log(req)
     const name = req.body.name
     const rollno = req.body.rollno
     const dept =  req.body.dept
