@@ -15,13 +15,12 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 
-
 const connectParam = {
     useNewUrlParser : true,
     useUnifiedTopology : true
 }
 
-const uri = `mongodb+srv://root:abcd1234@demo.vojbrj9.mongodb.net/?retryWrites=true&w=majority`
+const uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@demo.vojbrj9.mongodb.net/?retryWrites=true&w=majority`
 
 const connection = mongoose.connect(uri,connectParam)
                     .then(()=>console.log('COnnedted to Mongo DB Successfully'))
@@ -53,6 +52,12 @@ app.get("/insert", (req,res)=>{
 
 app.get('/update',(req,res)=>{
     res.sendFile(__dirname+'/update.html')
+})
+
+app.post('/deletedb', (req,res)=>{
+    const rollno = req.body.rollno;
+    user.deleteOne({rollno:rollno}).then((res)=>console.log(res)).catch((err)=>console.log(err))
+    res.redirect('/')
 })
 
 app.post('/insertdb',(req,res)=>{

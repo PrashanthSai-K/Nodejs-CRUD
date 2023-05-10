@@ -21,32 +21,84 @@
             font-weight: 600;
             margin-left: 6%;
         }
-        .header-container{
+
+        .header-container {
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-top: 2%;
+            flex-wrap: wrap;
         }
-        .nav-links{
+
+        .nav-links {
             margin-right: 6%;
             padding: 10px;
             margin-left: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            
         }
-        .nav-links a{
+
+        .nav-links a {
             text-decoration: none;
             color: black;
             border: 1px solid black;
             padding: 10px;
             border-radius: 10px;
             transition: all ease-in 0.3s;
+            margin-left: 10px;
+            margin-top: 10px;
         }
-        .nav-links a:hover{
+
+        .nav-links a:hover {
             color: white;
             background-color: black;
         }
-        #users-list{
+
+        #users-list {
             margin-left: 8%;
             margin-top: 2%;
+        }
+
+        .button {
+            padding: 10px;
+            background-color: white;
+            border: 1px solid black;
+            border-radius: 10px;
+            width: 100px;
+            transition: all ease-in-out 0.3s;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background-color: black;
+            color: white;
+        }
+
+        .delete-container {
+            margin-left: 6%;
+            padding-top: 10px;
+        }
+
+        .delete-heading {
+            font-size: x-large;
+            font-weight: 600;
+        }
+
+        .warning {
+            color: red;
+        }
+        .delete-form{
+            margin-top: 3%;
+        }
+        .delete-form input {
+            border: none;
+            border-bottom: 1px solid black;
+
+        }
+
+        .delete-form input:focus {
+            outline: none;
         }
     </style>
 </head>
@@ -61,6 +113,19 @@
     </div>
 
     <div id="users-list"></div>
+    <div class="delete-container">
+        <div class="delete-heading">Delete User</div>
+        <div class="warning">Enter Rollno. to delete the user*</div>
+        <div class="delete-form">
+            <form action="/deletedb" method="POST">
+                <label for="rollno">Rollno:</label>
+                <input type="text" name="rollno">
+                <div style="margin-top: 2%;">
+                    <button type="submit" class="button" value="submit" style="font-family: Poppins;">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 
 <script>
